@@ -48,51 +48,51 @@
 //     .padStart(2, "0");
 // }
 
-// const colors = [
-//   { hex: "#FFA07A", rgb: "255, 160, 122" },
-//   { hex: "#00FF00", rgb: "0, 255, 0" },
-//   { hex: "#9400D3", rgb: "148, 0, 211" },
-//   { hex: "#4169E1", rgb: "65, 105, 225" },
-//   { hex: "#8B0000", rgb: "139, 0, 0" },
-// ];
-// const paletteContainer = document.querySelector(".js-palette");
+const colors = [
+	{ hex: '#FFA07A', rgb: '255, 160, 122' },
+	{ hex: '#00FF00', rgb: '0, 255, 0' },
+	{ hex: '#9400D3', rgb: '148, 0, 211' },
+	{ hex: '#4169E1', rgb: '65, 105, 225' },
+	{ hex: '#8B0000', rgb: '139, 0, 0' },
+];
+const paletteContainer = document.querySelector('.js-palette');
 
-// function createColorCardMarkup(colors) {
-//   return colors
-//     .map(({ hex, rgb }) => {
-//       return ` <div class="color-card">
-//    <div
-//      class="color-swatch"
-//      data-hex="${hex}"
-//      data-rgb="${rgb}"
-//      style="background-color: ${hex}"
-//    ></div>
-//    <div class="color-meta">
-//      <p>HEX: ${hex}</p>
-//      <p>RGB: ${rgb}</p>
-//    </div>
-//  </div>`;
-//     })
-//     .join("");
-// }
-// createColorCardMarkup(colors);
-// paletteContainer.insertAdjacentHTML("beforeend", createColorCardMarkup(colors));
+function createColorCardMarkup(colors) {
+	return colors
+		.map(({ hex, rgb }) => {
+			return ` <div class="color-card">
+   <div
+     class="color-swatch"
+     data-hex= "${hex}"
+     data-rgb= "${rgb}"
+     style="background-color: ${hex}"
+   ></div>
+   
+   <div class="color-meta">
+     
+   <p>HEX: ${hex}</p>
+     <p>RGB:   ${rgb}</p>
+   </div>
+ </div>`;
+		})
+		.join('');
+}
+createColorCardMarkup(colors);
+paletteContainer.insertAdjacentHTML('beforeend', createColorCardMarkup(colors));
 
-// paletteContainer.addEventListener("click", onPaletteContainerClick);
+paletteContainer.addEventListener('click', onPaletteContainerClick);
 
-// function onPaletteContainerClick(event) {
-//   const isColorSwarchEl = event.target.classList.contains("color-swatch");
-//   if (!isColorSwarchEl) {
-//     return;
-//   }
-//   const swatchEl = event.target;
+function onPaletteContainerClick(event) {
+	const isColorSwarchEl = event.target.classList.contains('color-swatch');
+	if (!isColorSwarchEl) {
+		return;
+	}
+	const swatchEl = event.target;
 
-//   const currentActiveCard = document.querySelector(".color-card.is-active");
-//   if (currentActiveCard) {
-//     currentActiveCard.classList.remove("is-active");
-//   }
-//   swatchEl.closest(".color-card").classList.add("is-active");
-//   document.body.style.backgroundColor = swatchEl.dataset.hex;
-// }
-
-
+	const currentActiveCard = document.querySelector('.color-card.is-active');
+	if (currentActiveCard) {
+		currentActiveCard.classList.remove('is-active');
+	}
+	swatchEl.closest('.color-card').classList.add('is-active');
+	document.body.style.backgroundColor = swatchEl.dataset.hex;
+}
